@@ -10,11 +10,20 @@ public class Biblioteka implements BibliotekaInterfejs {
 						new LinkedList<Knjiga>();
 				
 				public void dodajKnjigu(Knjiga knjiga) {
-					knjige.add(knjiga);
+					if (knjiga==null)
+						throw new RuntimeException("Knjiga ne sme biti null");
+								
+						if (knjige.contains(knjiga))
+							throw new RuntimeException("Knjiga je vec u biblioteci");
+								
+						knjige.add(knjiga);
 				}
 			
 				public void obrisiKnjigu(Knjiga knjiga) {
-					knjige.remove(knjiga);
+					if (!knjige.contains(knjiga))
+								throw new RuntimeException("Knjiga ne postoji u biblioteci");
+								
+						 	knjige.remove(knjiga);
 				}
 			
 				public LinkedList<Knjiga> pronadjiKnjigu(String naslov, long ISBN,
@@ -22,6 +31,9 @@ public class Biblioteka implements BibliotekaInterfejs {
 					LinkedList<Knjiga> rezultat = 
 							new LinkedList<Knjiga>();
 					
+					if (naslov==null && ISBN<=0 && izdavac==null && autor==null)
+									throw new RuntimeException("Morate uneti neki kriterijum");
+				
 					if (ISBN > 0)
 						for (int i=0;i<knjige.size();i++)
 							if (knjige.get(i).getISBN()==ISBN)
