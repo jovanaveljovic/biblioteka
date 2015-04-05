@@ -41,6 +41,11 @@ public class Biblioteka implements BibliotekaInterfejs {
 					
 					return rezultat;
 				}
+
+				public LinkedList<Knjiga> vratiSveKnjige() {
+					
+					return knjige;
+				}
 			
 
 }
