@@ -9,6 +9,8 @@ public class Autor {
 		}
 	
 		public void setIme(String ime) {
+			if(ime.isEmpty() || ime==null)
+				throw new RuntimeException("Morate uneti ime");
 			this.ime = ime;
 		}
 	
@@ -17,6 +19,8 @@ public class Autor {
 		}
 	
 		public void setPrezime(String prezime) {
+			if(prezime.isEmpty() || prezime==null)
+				throw new RuntimeException("Morate uneti prezime");
 			this.prezime = prezime;
 		}
 		
